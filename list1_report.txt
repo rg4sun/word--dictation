@@ -1,8 +1,0 @@
-
-splendid            : splendid             = ✅
-test                : test                 = ✅
-supreme             : supreme              = ✅
-super               : supers               = ❌
-ardent              : ardent               = ✅
---------------------------------------------------
-Acc:0.8 (4/5)

@@ -103,13 +103,16 @@ def dictate(list_path:str, alphabetical=False, repeat_times=1, report_save=True,
         ans = input('write ur answer here = ')
         comparing_sheet.append(ans==w)
         if report_save:
+            if not os.path.exists(save_path):
+                os.mkdir(save_path)
+            report_path = os.path.join(save_path, list_name + '_report.txt')
             # https://www.runoob.com/python/python-func-open.html
-            with open(list_name + '_report.txt', 'a+') as fp:
+            with open(report_path, 'a+') as fp:
                 # fp.write('{}: {} = {}\n'.format(w, ans, '✅' if ans==w else '❌'))
                 fp.write('\n%-20s: %-20s = %s'%(w, ans, '✅' if ans==w else '❌'))
     result = 'Acc:{} ({}/{})'.format(sum(comparing_sheet)/len(comparing_sheet), sum(comparing_sheet), len(comparing_sheet))
     if report_save:
-        with open(list_name + '_report.txt', 'a+') as fp:
+        with open(report_path, 'a+') as fp:
             fp.write('\n')
             fp.write('-'*50)
             fp.write('\n{}'.format(result))
